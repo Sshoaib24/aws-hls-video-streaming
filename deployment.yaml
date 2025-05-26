@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-hls-video-streaming
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: aws-hls-video-streaming
+  template:
+    metadata:
+      labels:
+        app: aws-hls-video-streaming
+    spec:
+      containers:
+      - name: video-streaming-container
+        image: <your-docker-image-name>:latest
+        ports:
+        - containerPort: 80
